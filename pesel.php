@@ -39,12 +39,22 @@ function pesel(string $pesel)
 
     if($pesel[10] == $cyfraKontrolna)
     {
-        echo "Pesel jest prawidłowy";
+        echo "Pesel jest prawidłowy<br>";
     }
     else 
     {
-        echo "Pesel jest nieprawidłowy";
+        echo "Pesel jest nieprawidłowy<br>";
     }
+
+    //sprawdz rok urodzenia i wypisz wiek osoby w latach
+    $rokUrodzenia = intval($pesel[0]) * 10 + intval($pesel[1]); //da nam rok - np 04 albo 85
+    if($pesel[2] == 2) $rokUrodzenia += 2000;
+    if($pesel[2] < 2) $rokUrodzenia += 1900;
+    //teraz mamy 19xx albo 20xx rok
+    $wiek = 2021 - $rokUrodzenia;
+    echo "Właściciel numeru PESEL ma $wiek lat<br>";
+    //sprawdź płeć i wyświetl stosowny komunikat
+
 }
 
 pesel("00000000000");
