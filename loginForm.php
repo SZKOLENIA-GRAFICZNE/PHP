@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,13 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="post">
-        <label for="login">Nazwa użytkownika:</label>
-        <input type="text" name="login" id="login" required><br>
-        <label for="haslo">Hasło:</label>
-        <input type="password" name="haslo" id="haslo" required><br>
-        <button type="submit">Zaloguj</button>
-    </form>
+    
     <?php
     if(isset($_REQUEST['login']) && isset($_REQUEST['haslo'])) {
         //echo "<pre>";
@@ -26,11 +21,21 @@
 
         if($login == $prawidlowyLogin && $haslo == $prawidloweHaslo) {
             echo "Zalogowałeś sie poprawnie <br>";
+            $_SESSION['login'] = $login;
         } else {
             echo "Błędny login lub hasło!<br>";
         }
     }
         
     ?>
+    <?php if(!isset($_SESSION['login'])) : ?>
+    <form action="" method="post">
+        <label for="login">Nazwa użytkownika:</label>
+        <input type="text" name="login" id="login" required><br>
+        <label for="haslo">Hasło:</label>
+        <input type="password" name="haslo" id="haslo" required><br>
+        <button type="submit">Zaloguj</button>
+    </form>
+    <?php endif ?>
 </body>
 </html>
