@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,27 +7,27 @@
     <title>Document</title>
 </head>
 <body>
-    
     <?php
     if(isset($_REQUEST['login']) && isset($_REQUEST['haslo'])) {
-        //echo "<pre>";
-        //var_dump($_REQUEST);
-        $prawidlowyLogin = "jkowalski";
-        $prawidloweHaslo = "superHaslo1";
+        $db = new mysqli('localhost', 'root', '', 'php');
 
         $login = $_REQUEST['login'];
         $haslo = $_REQUEST['haslo'];
 
-        if($login == $prawidlowyLogin && $haslo == $prawidloweHaslo) {
+        $sql = "SELECT * FROM `user` WHERE `login` = \"$login\"";
+
+        $wynik = $db->query($sql);
+        $wiersz = $wynik->fetch_assoc();
+
+        $hasloZBazy = $wiersz['haslo'];
+
+        if($haslo == $hasloZBazy) {
             echo "Zalogowałeś sie poprawnie <br>";
-            $_SESSION['login'] = $login;
         } else {
             echo "Błędny login lub hasło!<br>";
         }
     }
-        
     ?>
-    <?php if(!isset($_SESSION['login'])) : ?>
     <form action="" method="post">
         <label for="login">Nazwa użytkownika:</label>
         <input type="text" name="login" id="login" required><br>
@@ -36,8 +35,5 @@
         <input type="password" name="haslo" id="haslo" required><br>
         <button type="submit">Zaloguj</button>
     </form>
-    <?php else : ?>
-        Witaj ponownie <?php echo $_SESSION['login']; ?>
-    <?php endif ?>
 </body>
 </html>
