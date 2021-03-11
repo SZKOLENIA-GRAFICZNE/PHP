@@ -19,9 +19,9 @@
         $wynik = $db->query($sql);
         $wiersz = $wynik->fetch_assoc();
 
-        $hasloZBazy = $wiersz['haslo'];
+        $hashZBazy = $wiersz['haslo'];
 
-        if($haslo == $hasloZBazy) {
+        if(password_verify($haslo, $hashZBazy)) {
             echo "Zalogowałeś sie poprawnie <br>";
         } else {
             echo "Błędny login lub hasło!<br>";
