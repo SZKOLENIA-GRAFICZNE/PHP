@@ -10,6 +10,7 @@
 <body>
     <header>
         <h1>Nazwa naszej strony</h1>
+        <a href="upload.php">Wrzuć obrazek</a>
     </header>
     <main>
         <?php 
@@ -24,7 +25,7 @@
                 echo '<article>
                 <h3>' . $podpis . '</h3>
                 <h5>Autor: ' . $autor . '</h5>
-                <img src="img/' . $url . '" alt="Testowy obrazek">
+                <img src="' . $url . '" alt="Testowy obrazek">
                 <h6>Opublikowano: ' . $data . '</h6>
                 <h6><a href="#">Komentarze</a></h6>
                 </article>';
