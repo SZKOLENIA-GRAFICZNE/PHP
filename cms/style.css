@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    background-color: lightgray;
 }
 header {
     height: 100px;
@@ -19,7 +20,19 @@ article {
     padding: 10px;
     box-shadow: 5px 10px 8px 10px grey;
     margin-bottom: 25px;
+    background-color: white;
 }
 article img {
     width: 100%;
+}
+nav {
+    
+}
+nav ul {
+    list-style-type: none;
+    text-align: center;
+}
+nav ul li {
+    display: inline;
+    margin: 5px;
 }

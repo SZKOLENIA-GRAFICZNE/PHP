@@ -30,7 +30,15 @@
                 </article>';
             }
         ?>
-        
+        <nav>
+            <ul>
+                <li><a href="http://">5</a></li>
+                <li><a href="http://">4</a></li>
+                <li><a href="http://">3</a></li>
+                <li><a href="http://">2</a></li>
+                <li><a href="http://">1</a></li>
+            </ul>
+        </nav>
     </main>
 </body>
 </html>
