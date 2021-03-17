@@ -13,6 +13,12 @@
             exit;
         }
         require('db.php');
+
+        if(isset($_REQUEST['usun'])) {
+            $sql = "DELETE FROM memy WHERE `id` = ".$_REQUEST['usun'];
+            $baza->query($sql);
+        }
+
         $sql = "SELECT * FROM memy";
         $wynik = $baza->query($sql);
         echo '<table border="1">';
@@ -22,7 +28,7 @@
                   <td>' . $mem['autor'] . '</td>
                   <td>' . $mem['tytul'] . '</td>
                   <td>' . $mem['url'] . '</td>
-                  <td><a href="">Usuń</a></td>';
+                  <td><a href="admin.php?usun=' . $mem['id'] . '">Usuń</a></td>';
             echo '</tr>';
         }
         echo '</table>';
