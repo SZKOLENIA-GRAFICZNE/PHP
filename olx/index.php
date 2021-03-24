@@ -25,11 +25,13 @@ $result = $query->get_result();
 echo '<table>';
 echo '<tr><th>Nazwa przedmiotu</th><th>Cena</th></tr>';
 while($row = $result->fetch_assoc()) {
+    $id = $row['id'];
     $name = $row['name'];
     $price = $row['price'];
 
     echo '<tr>';
-    echo "<td>$name</td><td>$price</td>";
+    echo "<td><a href=\"item.php?id=$id\">$name</a></td>";
+    echo "<td>$price</td>";
     echo '</tr>';
 }
 echo '</table>';
