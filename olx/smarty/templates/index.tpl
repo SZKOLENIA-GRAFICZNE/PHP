@@ -24,8 +24,8 @@
 <tr><th>Nazwa przedmiotu</th><th>Cena</th></tr>
 {foreach from=$productList item=product}
 <tr>
-    <td>{$product.id}</td>
-    <td>{$product.name}</td>
+    <td><img alt="{$product.name}" src="{$product.url}"></td>
+    <td><a href="item.php?id={$product.id}">{$product.name}</a></td>
     <td>{$product.price}</td>
 </tr>
 {/foreach}

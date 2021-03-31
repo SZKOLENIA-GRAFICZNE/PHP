@@ -33,3 +33,24 @@ span.errorMsg {
     font-weight: bold;
     font-size: 2rem;
 }
+div.registerForm {
+    height: 50vmin;
+    width: 50vmin;
+    position: fixed;
+    left: 25vmin;
+    top: 25vmin;
+    text-align: center;
+}
+div.registerForm input {
+    margin-bottom: 20px;
+}
+span.errorMsg {
+    color: red;
+    font-weight: bold;
+    font-size: 2rem;
+}
+div.item {
+    width: 80vmin;
+    position: fixed;
+    left: 10vmin;
+}

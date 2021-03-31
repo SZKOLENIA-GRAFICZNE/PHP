@@ -1,22 +1,13 @@
-<?php session_start(); ?>
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karta przedmiotu</title>
-    <style>
-        div.item {
-            width: 80vmin;
-            position: fixed;
-            left: 10vmin;
-        }
-    </style>
-</head>
-<body>
-<?php
+<?php 
 require_once('db.php');
+require_once('smarty/Smarty.class.php');
+session_start(); 
+$smarty = new Smarty();
+$smarty->setTemplateDir('smarty/templates');
+$smarty->setCompileDir('smarty/templates_c');
+$smarty->setCacheDir('smarty/cache');
+$smarty->setConfigDir('smarty/configs');
+
 $query = $db->prepare("SELECT name, price, time, url, login FROM item 
                         LEFT JOIN user on user.id=item.seller 
                         WHERE item.id=?");
@@ -25,18 +16,6 @@ $query->bind_param("i", $id);
 $query->execute();
 $result = $query->get_result();
 $item = $result->fetch_assoc();
-$name = $item['name'];
-$price = $item['price'];
-$url = $item['url'];
-?>
-<div class="item">
-    <h1><?php echo $name; ?></h1>
-    <div class="itemImage">
-        <img src="<?php echo $url;?>"> 
-    </div>
-    Cena: <?php echo $price; ?><br>
-    <a href="index.php">Powrót na stronę główną</a>
-</div>
+$smarty->assign('item', $item);
 
-</body>
-</html>
+$smarty->display('item.tpl');
