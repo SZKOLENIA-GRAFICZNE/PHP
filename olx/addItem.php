@@ -1,14 +1,25 @@
 <?php
 session_start();
 if(isset($_REQUEST['itemName']) && isset($_REQUEST['itemPrice'])) {
-    require_once('db.php');
     $itemName = $_REQUEST['itemName'];
     $itemPrice = $_REQUEST['itemPrice'];
+    $staraNazwa = $_FILES['itemImage']['name'];
+    $tymczasowaNazwa = $_FILES['itemImage']['tmp_name'];
+    //var_dump($_FILES);
+    $nazwaPliku = md5($itemName . time());
+    $nazwaPliku .= '.';
+    $nazwaPliku .= pathinfo($staraNazwa, PATHINFO_EXTENSION);
+    $nazwaPliku = "img/" . $nazwaPliku;
+    //echo $nazwaPliku;
+    require_once('db.php');
     
-    $query = $db->prepare("INSERT INTO item (id, name, price) VALUES (NULL, ?, ?)");
-    $query->bind_param("sd", $itemName, $itemPrice);
+    $seller = $_SESSION['id'];
+    $query = $db->prepare("INSERT INTO item (id, name, price, url, seller) 
+                VALUES (NULL, ?, ?, ?, ?)");
+    $query->bind_param("sdss", $itemName, $itemPrice, $nazwaPliku, $seller);
     $result = $query->execute();
-    header('Location: index.php');
+    move_uploaded_file($tymczasowaNazwa, $nazwaPliku);
+    //header('Location: index.php');
 }
 
 ?>
@@ -23,11 +34,13 @@ if(isset($_REQUEST['itemName']) && isset($_REQUEST['itemPrice'])) {
 </head>
 
 <body>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <label for="itemName">Nazwa przedmiotu: </label><br>
         <input type="text" name="itemName" id="itemName"><br>
         <label for="itemPrice">Cena: </label><br>
         <input type="number" name="itemPrice" id="itemPrice"> zł <br>
+        <label for="itemImage">Zdjęcie: </label><br>
+        <input type="file" name="itemImage" id="itemImage"><br>
         <button type="submit">Wystaw na sprzedaż</button>
     </form>
 </body>

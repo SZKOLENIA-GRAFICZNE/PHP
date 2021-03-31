@@ -17,7 +17,7 @@
 <body>
 <?php
 require_once('db.php');
-$query = $db->prepare("SELECT name, price, time, login FROM item 
+$query = $db->prepare("SELECT name, price, time, url, login FROM item 
                         LEFT JOIN user on user.id=item.seller 
                         WHERE item.id=?");
 $id = $_REQUEST['id'];
@@ -27,11 +27,12 @@ $result = $query->get_result();
 $item = $result->fetch_assoc();
 $name = $item['name'];
 $price = $item['price'];
+$url = $item['url'];
 ?>
 <div class="item">
     <h1><?php echo $name; ?></h1>
     <div class="itemImage">
-        <img src="https://picsum.photos/200/300"> 
+        <img src="<?php echo $url;?>"> 
     </div>
     Cena: <?php echo $price; ?><br>
     <a href="index.php">Powrót na stronę główną</a>

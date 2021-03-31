@@ -40,6 +40,7 @@ if(isset($_REQUEST['login']) && isset($_REQUEST['password'])) {
     if($result->num_rows == 1) {
         $userRow = $result->fetch_assoc();
         $dbHash = $userRow['password'];
+        $id = $userRow['id'];
     } else {
         $dbHash = null;
     }
@@ -49,6 +50,7 @@ if(isset($_REQUEST['login']) && isset($_REQUEST['password'])) {
     if($success) {
         //udało się zalogować
         $_SESSION['login'] = $login;
+        $_SESSION['id'] = $id;
         header('Location: index.php');
     } else {
         //nie udało się zalogować
