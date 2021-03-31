@@ -1,5 +1,14 @@
 <?php
-session_start();
+require_once('db.php');
+require_once('smarty/Smarty.class.php');
+session_start(); 
+$smarty = new Smarty();
+$smarty->setTemplateDir('smarty/templates');
+$smarty->setCompileDir('smarty/templates_c');
+$smarty->setCacheDir('smarty/cache');
+$smarty->setConfigDir('smarty/configs');
+
+
 if(isset($_REQUEST['itemName']) && isset($_REQUEST['itemPrice'])) {
     $itemName = $_REQUEST['itemName'];
     $itemPrice = $_REQUEST['itemPrice'];
@@ -23,41 +32,15 @@ if(isset($_REQUEST['itemName']) && isset($_REQUEST['itemPrice'])) {
     header('Location: index.php');
 }
 
+
+$query = $db->prepare("SELECT * FROM category");
+$query->execute();
+$result = $query->get_result();
+$categoryList = array();
+while($category = $result->fetch_assoc())
+    array_push($categoryList, $category);
+$smarty->assign('categoryList', $categoryList);
+
+$smarty->display('addItem.tpl');
 ?>
-<!DOCTYPE html>
-<html lang="pl">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dodawanie przedmiotu</title>
-</head>
-
-<body>
-    <form action="" method="post" enctype="multipart/form-data">
-        <label for="itemName">Nazwa przedmiotu: </label><br>
-        <input type="text" name="itemName" id="itemName" required><br>
-        <label for="itemPrice">Cena: </label><br>
-        <input type="number" name="itemPrice" id="itemPrice" required> zł <br>
-        <select name="category">
-        <?php
-            require_once('db.php');
-            $query = $db->prepare("SELECT * FROM category");
-            $query->execute();
-            $result = $query->get_result();
-            while($category = $result->fetch_assoc())
-            {
-                $id = $category['id'];
-                $name = $category['name'];
-                echo "<option value=\"$id\">$name</option>";
-            }
-        ?>
-        </select><br>
-        <label for="itemImage">Zdjęcie: </label><br>
-        <input type="file" name="itemImage" id="itemImage" required><br>
-        <button type="submit">Wystaw na sprzedaż</button>
-    </form>
-</body>
-
-</html>
