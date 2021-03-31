@@ -37,9 +37,9 @@ if(isset($_REQUEST['itemName']) && isset($_REQUEST['itemPrice'])) {
 <body>
     <form action="" method="post" enctype="multipart/form-data">
         <label for="itemName">Nazwa przedmiotu: </label><br>
-        <input type="text" name="itemName" id="itemName"><br>
+        <input type="text" name="itemName" id="itemName" required><br>
         <label for="itemPrice">Cena: </label><br>
-        <input type="number" name="itemPrice" id="itemPrice"> zł <br>
+        <input type="number" name="itemPrice" id="itemPrice" required> zł <br>
         <select name="category">
         <?php
             require_once('db.php');
@@ -55,7 +55,7 @@ if(isset($_REQUEST['itemName']) && isset($_REQUEST['itemPrice'])) {
         ?>
         </select><br>
         <label for="itemImage">Zdjęcie: </label><br>
-        <input type="file" name="itemImage" id="itemImage"><br>
+        <input type="file" name="itemImage" id="itemImage" required><br>
         <button type="submit">Wystaw na sprzedaż</button>
     </form>
 </body>
