@@ -1,0 +1,35 @@
+div#lewy {
+    width: 20vh;
+    float: left;
+}
+div#prawy {
+    width: 80vh;
+    float: left;
+}
+td img {
+    height: 100px;
+}
+td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+table {
+    border-collapse: collapse;
+}
+div.loginForm {
+    height: 50vmin;
+    width: 50vmin;
+    position: fixed;
+    left: 25vmin;
+    top: 25vmin;
+    text-align: center;
+}
+div.loginForm input,
+div.loginForm button {
+    margin-bottom: 20px;
+}
+span.errorMsg {
+    color: red;
+    font-weight: bold;
+    font-size: 2rem;
+}
