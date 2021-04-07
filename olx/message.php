@@ -8,6 +8,10 @@ $smarty->setCompileDir('smarty/templates_c');
 $smarty->setCacheDir('smarty/cache');
 $smarty->setConfigDir('smarty/configs');
 
+if(isset($_SESSION['id']))
+{
+    $smarty->assign("login", $_SESSION['login']);
+}
 
 $query = $db->prepare("SELECT * FROM message
                         LEFT JOIN user on message.sender_id=user.id 

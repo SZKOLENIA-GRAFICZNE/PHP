@@ -8,9 +8,16 @@ $smarty->setCompileDir('smarty/templates_c');
 $smarty->setCacheDir('smarty/cache');
 $smarty->setConfigDir('smarty/configs');
 
-if(!isset($_REQUEST['reciever_id'])) //dopiero będziemy pisać
+if(isset($_SESSION['id']))
+{
+    $smarty->assign("login", $_SESSION['login']);
+}
+
+if(!isset($_REQUEST['topic'])) //dopiero będziemy pisać
 {
     $smarty->assign('sender_id', $_SESSION['id']);
+    $smarty->assign('reciever_id', $_REQUEST['reciever_id']);
+    $smarty->assign('reciever', $_REQUEST['reciever']);
     $smarty->display('addMessage.tpl');
 }
    

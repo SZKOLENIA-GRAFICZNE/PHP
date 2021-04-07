@@ -1,14 +1,5 @@
 {include file="header.tpl"}
-<div class="container">
-    <header class="row mt-5">
-        {if isset($login)}
-        <div class="col-8"><h3>Witaj {$login}!</h3></div>
-        <div class="col-2"><a href="addItem.php"><button type="button" class="btn btn-primary">Wystaw przedmiot</button></a></div>
-        <div class="col-2"><a href="logout.php"><button type="button" class="btn btn-primary">Wyloguj się</button></a></div>
-        {else}
-        <div class="col">Witaj nieznajomy. Zaloguj się <a href="login.php">tutaj</a></div>
-        {/if}
-    </header>
+
     <main class="row mt-3">
         <div class="col-2">
             <h3 class="mb-3">Kategorie</h3>
@@ -34,14 +25,7 @@
             </table>
         </div>
     </main>
-</div><!-- /container-->
 
 
-<div id="lewy">
 
-</div>
-<div id="prawy">
-
-
-</div>
 {include file="footer.tpl"}

@@ -8,7 +8,17 @@ $smarty->setCompileDir('smarty/templates_c');
 $smarty->setCacheDir('smarty/cache');
 $smarty->setConfigDir('smarty/configs');
 
-$query = $db->prepare("SELECT item.id, name, price, time, url, login FROM item 
+
+if(isset($_SESSION['id']))
+{
+    $smarty->assign("login", $_SESSION['login']);
+    $smarty->assign('author_id', $_SESSION['id']);
+}
+
+else 
+    $smarty->assign('author_id', 0);
+
+$query = $db->prepare("SELECT item.id, name, price, time, url, login, user.id AS seller_id FROM item 
                         LEFT JOIN user on user.id=item.seller 
                         WHERE item.id=?");
 $id = $_REQUEST['id'];
@@ -29,8 +39,5 @@ while($comment = $result->fetch_assoc()) {
 $smarty->assign('commentsList', $commentsList);
 
 $smarty->assign('item_id', $item['id']);
-if(isset($_SESSION['id']))
-    $smarty->assign('author_id', $_SESSION['id']);
-else 
-    $smarty->assign('author_id', 0);
+
 $smarty->display('item.tpl');

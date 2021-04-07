@@ -5,7 +5,8 @@
             <form action="addMessage.php" method="post">
                 <input class="form-control" type="hidden" name="sender_id" value="{$sender_id}">
                 <label class="form-label" for="receiver">Odbiorca: </label><br>
-                <input class="form-control" type="text" name="reciever_id" id="receiver">
+                <input class="form-control" type="hidden" name="reciever_id" id="receiver_id" value="{$reciever_id}">
+                <input class="form-control" type="text" name="reciever" id="receiver" value="{$reciever}" readonly>
                 <label class="form-label" for="messageTopic">Temat: </label><br>
                 <input class="form-control" type="text" name="topic" id="messageTopic">
                 <label class="form-label" for="messageContent">Treść: </label><br>

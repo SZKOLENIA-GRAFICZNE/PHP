@@ -1,6 +1,6 @@
 {include file="header.tpl"}
-<div class="container">
-    <div class="row">
+
+    <div class="row mt-3">
         <div class="col">
             <table class="table table-bordered">
 <th>Czas</th>
@@ -20,6 +20,6 @@
         </table>
         </div>
     </div>
-</div><!-- /container-->
+    
 
 {include file="footer.tpl"}

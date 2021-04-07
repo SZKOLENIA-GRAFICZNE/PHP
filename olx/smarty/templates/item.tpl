@@ -1,15 +1,5 @@
 {include file="header.tpl"}
-<div class="container">
-    <header class="row mt-5">
-        {if isset($login)}
-        <div class="col-8"><h3>Witaj {$login}!</h3></div>
-        <div class="col-2"><a href="addItem.php"><button type="button" class="btn btn-primary">Wystaw przedmiot</button></a></div>
-        <div class="col-2"><a href="logout.php"><button type="button" class="btn btn-primary">Wyloguj się</button></a></div>
-        {else}
-        <div class="col">Witaj nieznajomy. Zaloguj się <a href="login.php">tutaj</a></div>
-        {/if}
-        <a href="index.php">Powrót na stronę główną</a>
-    </header>
+
     <main class="row mt-3">
         <h1>{$item.name}</h1>
         <div class="col-6">
@@ -17,9 +7,9 @@
         </div>
         <div class="col-6">
             
-                
+            Sprzedający: <a href="addMessage.php?reciever_id={$item.seller_id}&reciever={$item.login}">{$item.login}</a> <br>    
             Cena: {$item.price}
-    
+
         </div>
         <h3>Komentarze:</h3>
         {foreach from=$commentsList item=comment}
@@ -42,7 +32,5 @@
             
         </form>
     </main>
-
-</div><!-- /container-->
 
 {include file="footer.tpl"}

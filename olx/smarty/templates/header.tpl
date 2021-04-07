@@ -10,3 +10,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="container">
+    <header class="row mt-5 border-bottom">
+        {if isset($login)}
+        <div class="col-2"><h3><a href="index.php">Główna</a></h3></div>
+        <div class="col-4"><h3>Witaj {$login}!</h3></div>
+        <div class="col-2"><a href="message.php"><button type="button" class="btn btn-primary">Wiadomości</button></a></div>
+        <div class="col-2"><a href="addItem.php"><button type="button" class="btn btn-primary">Wystaw przedmiot</button></a></div>
+        <div class="col-2"><a href="logout.php"><button type="button" class="btn btn-primary">Wyloguj się</button></a></div>
+        {else}
+        <div class="col">Witaj nieznajomy. Zaloguj się <a href="login.php">tutaj</a></div>
+        {/if}
+    </header>

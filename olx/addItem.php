@@ -8,6 +8,10 @@ $smarty->setCompileDir('smarty/templates_c');
 $smarty->setCacheDir('smarty/cache');
 $smarty->setConfigDir('smarty/configs');
 
+if(isset($_SESSION['id']))
+{
+    $smarty->assign("login", $_SESSION['login']);
+}
 
 if(isset($_REQUEST['itemName']) && isset($_REQUEST['itemPrice'])) {
     $itemName = $_REQUEST['itemName'];

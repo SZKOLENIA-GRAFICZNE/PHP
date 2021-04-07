@@ -1,5 +1,5 @@
 {include file="header.tpl"}
-<div class="container">
+
     <main class="row">
         <div class="col-12 col-md-8 offset-md-2 col-xl-4 offset-xl-4 mt-5">
             <form action="" method="post" enctype="multipart/form-data">
@@ -21,6 +21,6 @@
         </div>
     </main>
     
-</div>
+
     
 {include file="footer.tpl"}
