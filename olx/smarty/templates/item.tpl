@@ -45,7 +45,4 @@
 
 </div><!-- /container-->
 
-<div class="item">
-    
-</div>
 {include file="footer.tpl"}
