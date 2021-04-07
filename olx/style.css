@@ -3,18 +3,6 @@ a, a:visited, a:active {
     color: inherit;
 }
 
-div.loginForm {
-    height: 50vmin;
-    width: 50vmin;
-    position: fixed;
-    left: 25vmin;
-    top: 25vmin;
-    text-align: center;
-}
-div.loginForm input,
-div.loginForm button {
-    margin-bottom: 20px;
-}
 span.errorMsg {
     color: red;
     font-weight: bold;
