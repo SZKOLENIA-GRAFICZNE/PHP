@@ -24,8 +24,3 @@ span.errorMsg {
     font-weight: bold;
     font-size: 2rem;
 }
-div.item {
-    width: 80vmin;
-    position: fixed;
-    left: 10vmin;
-}
