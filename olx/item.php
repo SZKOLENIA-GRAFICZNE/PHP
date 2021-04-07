@@ -34,7 +34,20 @@ $query->execute();
 $result = $query->get_result();
 $commentsList = array();
 while($comment = $result->fetch_assoc()) {
-    array_push($commentsList, $comment);
+    if($comment['parent'] == NULL) 
+        array_push($commentsList, $comment);
+    else 
+    {
+        foreach ($commentsList as &$parentComment) {
+            if($parentComment['id'] == $comment['parent'])
+            {
+                if(!isset($parentComment['childList'])) 
+                    $parentComment['childList'] = array();
+                array_push($parentComment['childList'], $comment);
+                break;
+            }
+        }
+    }
 }
 $smarty->assign('commentsList', $commentsList);
 
