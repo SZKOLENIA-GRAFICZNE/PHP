@@ -21,7 +21,7 @@ else //wysyłamy
     $topic = $_REQUEST['topic'];
     $content = $_REQUEST['content'];
 
-    $query = $db->prepare("INSERT INTO message (NULL, sender_id, reciever_id, topic, content)
+    $query = $db->prepare("INSERT INTO message (id, sender_id, reciever_id, topic, content)
                             VALUES (NULL, ?, ?, ?, ?)");
     $query->bind_param("iiss", $sender_id, $reciever_id, $topic, $content);
     $query->execute();

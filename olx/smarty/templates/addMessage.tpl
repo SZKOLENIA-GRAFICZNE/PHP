@@ -3,11 +3,14 @@
     <div class="row">
         <div class="col">
             <form action="addMessage.php" method="post">
-                <input type="hidden" name="sender_id" value="{$sender_id}">
-                <input type="text" name="reviever_id">
-                <input type="text" name="topic" id="messageTopic">
-                <input type="text" name="content" id="messageContent">
-                <button type="submit" class="btn btn-primary">Wyśłij wiadomość</button>
+                <input class="form-control" type="hidden" name="sender_id" value="{$sender_id}">
+                <label class="form-label" for="receiver">Odbiorca: </label><br>
+                <input class="form-control" type="text" name="reciever_id" id="receiver">
+                <label class="form-label" for="messageTopic">Temat: </label><br>
+                <input class="form-control" type="text" name="topic" id="messageTopic">
+                <label class="form-label" for="messageContent">Treść: </label><br>
+                <input class="form-control" type="text" name="content" id="messageContent">
+                <button type="submit" class="mt-3 btn btn-primary">Wyślij wiadomość</button>
             </form>
         </div>
     </div>
