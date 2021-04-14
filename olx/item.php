@@ -28,7 +28,7 @@ $result = $query->get_result();
 $item = $result->fetch_assoc();
 $smarty->assign('item', $item);
 
-$query = $db->prepare("SELECT * FROM comment WHERE item_id=?");
+$query = $db->prepare("SELECT comment.id, item_id, content, time, parent, login FROM `comment` LEFT JOIN user on user.id = comment.author_id WHERE item_id=?");
 $query->bind_param("i", $item['id']);
 $query->execute();
 $result = $query->get_result();

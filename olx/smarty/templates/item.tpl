@@ -14,7 +14,8 @@
         <h3>Komentarze:</h3>
         {foreach from=$commentsList item=comment}
             <div class="col-2">{$comment.time}</div>
-            <div class="col-9">{$comment.content}</div>
+            <div class="col-2">{$comment.login}</div>
+            <div class="col-7">{$comment.content}</div>
             <div class="col-1"><button class="btn btn-primary" data-parent="{$comment.id}" onclick="reply(this)">Odpowiedz</button></div>
             {if isset($comment.childList) }
                 {foreach from=$comment.childList item=childComment}
